@@ -240,21 +240,21 @@
   integrity sha512-ZYmr5mS2wd4Dew/JjT0Fqi2NPB/ZhZ2VvPp7SmvPZb4Y1CG/LRcS6tcRo2cYU7zLK5A7cdbhWnnWmUjoI4qapg==
 
 "@rtco/client@^0.1.27":
-  version "0.1.27"
-  resolved "https://registry.yarnpkg.com/@rtco/client/-/client-0.1.27.tgz#2abf261b70c9fee11f97946eddfd3c755f02e51e"
-  integrity sha512-tXC9b4cG13RGYh+8Pnp1eO7rRkuqPb65qo6T5PAKSEck56/t/aB+pLUUGrXYXe5pBC4V4WaN9rSX2TosjMZMzA==
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@rtco/client/-/client-0.1.29.tgz#e700d7a428f58996d7c7e062c9827275a843b4cb"
+  integrity sha512-V9p108cWuqfX4TKlBpKV+uBROLaYytyU1dl4fPbcj/dMiyI2GtP1IhysuSSv038Lw2jGrcs//OUcOSoyYpxeZA==
   dependencies:
     "@paralleldrive/cuid2" "^2.2.1"
-    "@rtco/peer" "0.1.26"
+    "@rtco/peer" "0.1.29"
     bufferutil "^4.0.7"
     eventemitter3 "^5.0.1"
     socket.io-client "^4.6.2"
     utf-8-validate "^6.0.3"
 
-"@rtco/peer@0.1.26":
-  version "0.1.26"
-  resolved "https://registry.yarnpkg.com/@rtco/peer/-/peer-0.1.26.tgz#b66999b82fcecbf6653e0fec152f7a90dafd31a1"
-  integrity sha512-+dQUw4tvHcF9affuJF0PZB5cggs462SBBUIgC897RQ82htWROfCnrtHrIyzX8JwX8JsJ/ThW5L2DPcK3Tn0kwg==
+"@rtco/peer@0.1.29":
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@rtco/peer/-/peer-0.1.29.tgz#5cb5fa7737ad2db752c41d16eb470785216cbd41"
+  integrity sha512-WUTxl94EVmriB95MqcsgsiGM3ogSMcKfYNkL5A43+6xcuiubl9kQviOT0elqdcTmtGIT7JqM1pOVMhBPmWMK6w==
   dependencies:
     eventemitter3 "^5.0.1"
 
