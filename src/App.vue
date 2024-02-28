@@ -5,6 +5,7 @@
     <button @click="connect">Connect</button>
 
     <p v-if="connected">Connected to {{ otherId }}</p>
+    {{ message }}
   </main>
 </template>
 
@@ -15,6 +16,7 @@ const selfId = ref("");
 const otherId = ref("");
 const peer = new Artico();
 const connected = ref(false);
+const message = ref("");
 
 peer.on("open", (id) => {
   console.log("My ID is", id);
@@ -28,10 +30,11 @@ peer.on("call", (conn) => {
   conn.on("open", () => {
     console.log("Connected to", conn.id);
     connected.value = true;
-    conn.send("asdasd");
+    conn.send("Call opened outgoing");
 
     conn.on("data", (data) => {
       console.log("Received", data);
+      message.value = data;
     });
   });
 });
@@ -40,6 +43,7 @@ const connect = () => {
   conn.on("open", () => {
     console.log("Connected to", otherId.value);
     connected.value = true;
+    conn.send("Call opened incmoing");
 
     conn.on("data", (data) => {
       console.log("Received", data);
