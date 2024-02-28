@@ -47,6 +47,7 @@ const connect = () => {
 
     conn.on("data", (data) => {
       console.log("Received", data);
+      message.value = data;
     });
   });
 };
