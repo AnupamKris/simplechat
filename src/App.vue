@@ -1,7 +1,7 @@
 <template>
   <main>
     <p>My Id: {{ selfId }}</p>
-    <input v-model="otherId" placeholder="Enter other peer's id" />
+    <input v-model="otherId" placeholder="Enter other rtco's id" />
     <button @click="connect">Connect</button>
 
     <p v-if="callIncoming">
@@ -27,7 +27,7 @@ import { Artico } from "@rtco/client";
 import { v4 } from "uuid";
 const selfId = ref("");
 const otherId = ref("");
-const peer = new Artico({
+const rtco = new Artico({
   id: v4().slice(0, 5),
 });
 const connected = ref(false);
@@ -37,12 +37,12 @@ const messages = ref([]);
 let remoteConnection = null;
 const callIncoming = ref(false);
 
-peer.on("open", (id) => {
+rtco.on("open", (id) => {
   console.log("My ID is", id);
   selfId.value = id;
 });
 
-peer.on("call", (con) => {
+rtco.on("call", (con) => {
   console.log("Incoming call");
   remoteConnection = con;
   callIncoming.value = true;
@@ -66,7 +66,7 @@ const answerCall = () => {
 
 const connect = () => {
   console.log("Connecting to", otherId.value);
-  remoteConnection = peer.call(otherId.value);
+  remoteConnection = rtco.call(otherId.value);
   remoteConnection.on("open", () => {
     console.log("Connected to", otherId.value);
     connected.value = true;
