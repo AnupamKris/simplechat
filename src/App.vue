@@ -1,5 +1,6 @@
 <template>
   <main>
+    <p>Artico ver: 0.2.1</p>
     <p>My Id: {{ selfId }}</p>
     <input v-model="otherId" placeholder="Enter other rtco's id" />
     <button @click="connect">Connect</button>
