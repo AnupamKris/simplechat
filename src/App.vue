@@ -24,10 +24,12 @@
 
 <script setup>
 import { Artico } from "@rtco/client";
-
+import { v4 } from "uuid";
 const selfId = ref("");
 const otherId = ref("");
-const peer = new Artico();
+const peer = new Artico({
+  id: v4().slice(0, 5),
+});
 const connected = ref(false);
 const message = ref("");
 const messages = ref([]);
