@@ -4,8 +4,21 @@
     <input v-model="otherId" placeholder="Enter other peer's id" />
     <button @click="connect">Connect</button>
 
-    <p v-if="connected">Connected to {{ otherId }}</p>
-    {{ message }}
+    <p v-if="callIncoming">
+      Incoming call <button @click="answerCall">Attend?</button>
+    </p>
+
+    <div v-if="connected" class="connected">
+      <input v-model="message" placeholder="Enter message" /><button
+        @click="sendMessage"
+      >
+        Send
+      </button>
+      <p>Connected to {{ otherId }}</p>
+      <div class="messages">
+        <p class="message" v-for="msg in messages" :key="msg">{{ msg }}</p>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -17,40 +30,100 @@ const otherId = ref("");
 const peer = new Artico();
 const connected = ref(false);
 const message = ref("");
+const messages = ref([]);
+
+let remoteConnection = null;
+const callIncoming = ref(false);
 
 peer.on("open", (id) => {
   console.log("My ID is", id);
   selfId.value = id;
 });
 
-peer.on("call", (conn) => {
-  conn.answer();
-  console.log("Connected to", conn.id);
-
-  conn.on("open", () => {
-    console.log("Connected to", conn.id);
-    connected.value = true;
-    conn.send("Call opened outgoing");
-
-    conn.on("data", (data) => {
-      console.log("Received", data);
-      message.value = data;
-    });
-  });
+peer.on("call", (con) => {
+  console.log("Incoming call");
+  remoteConnection = con;
+  callIncoming.value = true;
+  otherId.value = con.target;
 });
-const connect = () => {
-  let conn = peer.call(otherId.value);
-  conn.on("open", () => {
+
+const answerCall = () => {
+  remoteConnection.answer();
+  remoteConnection.on("open", () => {
     console.log("Connected to", otherId.value);
     connected.value = true;
-    conn.send("Call opened incmoing");
+    callIncoming.value = false;
+    remoteConnection.send("Call opened: Outgoing");
 
-    conn.on("data", (data) => {
+    remoteConnection.on("data", (data) => {
       console.log("Received", data);
-      message.value = data;
+      messages.value.push(data);
     });
   });
 };
+
+const connect = () => {
+  console.log("Connecting to", otherId.value);
+  remoteConnection = peer.call(otherId.value);
+  remoteConnection.on("open", () => {
+    console.log("Connected to", otherId.value);
+    connected.value = true;
+    remoteConnection.send("Call opened: Incoming");
+
+    remoteConnection.on("data", (data) => {
+      console.log("Received", data);
+      messages.value.push(data);
+    });
+  });
+};
+
+const sendMessage = () => {
+  remoteConnection.send(message.value);
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .connected {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+
+  .messages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 80%;
+
+    border: 1px solid #ccc;
+    border-radius: 25px;
+
+    padding: 20px 40px;
+  }
+}
+</style>
