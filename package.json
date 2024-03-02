@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@rtco/client": "^0.1.29",
+    "@rtco/client": "^0.2.1",
     "sass": "^1.70.0",
-    "sass-loader": "^14.1.0",
+    "sass-loader": "^14s.1.0",
     "uuid": "^9.0.1",
     "vue": "^3.4.15"
   },

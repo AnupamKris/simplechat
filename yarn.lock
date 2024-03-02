@@ -239,22 +239,22 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.12.0.tgz#9ffdf9ed133a7464f4ae187eb9e1294413fab235"
   integrity sha512-ZYmr5mS2wd4Dew/JjT0Fqi2NPB/ZhZ2VvPp7SmvPZb4Y1CG/LRcS6tcRo2cYU7zLK5A7cdbhWnnWmUjoI4qapg==
 
-"@rtco/client@^0.1.29":
-  version "0.1.32"
-  resolved "https://registry.yarnpkg.com/@rtco/client/-/client-0.1.32.tgz#8c0ed226becf590927856ed677f237a9b3d6f0a4"
-  integrity sha512-Den1s6VUpJn20mQLfv6r5YeuLxqFyd3nUW+zCurNpQCH8pP5c/fsTzOYpv2zV2FCtWXQGlPNq331iS6CzoPPeA==
+"@rtco/client@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rtco/client/-/client-0.2.1.tgz#c4dbfdb9b99db356d924761df19ce7cbceb81460"
+  integrity sha512-ruTD9nDuwRaBAjA2ihq/50xaiZBcwPn4FhevWCmN4UMKXpM67XlGGxoK/f2Xc789YoJHjKwduwynnIVkthWcpg==
   dependencies:
     "@paralleldrive/cuid2" "^2.2.1"
-    "@rtco/peer" "0.1.32"
+    "@rtco/peer" "0.2.1"
     bufferutil "^4.0.7"
     eventemitter3 "^5.0.1"
     socket.io-client "^4.6.2"
     utf-8-validate "^6.0.3"
 
-"@rtco/peer@0.1.32":
-  version "0.1.32"
-  resolved "https://registry.yarnpkg.com/@rtco/peer/-/peer-0.1.32.tgz#34393e6182a875df02a826ba5459e7a0431475fc"
-  integrity sha512-zZtwjpbId48eIkoBiI8O/1n0HujNznZ7WASzVNRIktLuYMlKh5bDlp6/r8K/yB+Th5g8zcSWWxngtRsjydqWcw==
+"@rtco/peer@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rtco/peer/-/peer-0.2.1.tgz#8462f9693a296ed259499243a6e71c9ad639a2b8"
+  integrity sha512-M4jzQI4DO3iyLobzCiEF5St+dq19vpJ/NpvvRiSeiZ5shhv88VYcQ/JPPM1tFXx6tlSLyqQKS20TU/8r6vVH1A==
   dependencies:
     eventemitter3 "^5.0.1"
 
